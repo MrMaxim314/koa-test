@@ -1,7 +1,7 @@
 import { Pool } from 'pg';
 
 export const pool = new Pool({
-    user: 'postgres',
+    user: 'root',
     host: 'localhost',
     password: 'root',
     database: 'koa_rest',

@@ -1,29 +1,36 @@
 {
-  "name": "koa-rest",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "@types/koa": "^2.14.0",
-    "@types/koa-router": "^7.4.8",
-    "@types/pg": "^8.10.9",
-    "@typescript-eslint/eslint-plugin": "^6.19.1",
-    "@typescript-eslint/parser": "^6.19.1",
-    "dotenv": "^16.4.1",
-    "eslint": "^8.56.0",
-    "koa": "^2.15.0",
-    "koa-router": "^12.0.1",
-    "nodemon": "^3.0.3",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.3.3"
-  },
-  "dependencies": {
-    "pg": "^8.11.3"
-  }
+    "name": "koa-rest",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "dev": "nodemon --exec ts-node ./index.ts"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "@types/jsonwebtoken": "^9.0.5",
+        "@types/koa": "^2.14.0",
+        "@types/koa-bodyparser": "^4.3.12",
+        "@types/koa-router": "^7.4.8",
+        "@types/pg": "^8.10.9",
+        "@typescript-eslint/eslint-plugin": "^6.19.1",
+        "@typescript-eslint/parser": "^6.19.1",
+        "dotenv": "^16.4.1",
+        "eslint": "^8.56.0",
+        "koa": "^2.15.0",
+        "koa-router": "^12.0.1",
+        "nodemon": "^3.0.3",
+        "ts-node": "^10.9.2",
+        "typescript": "^5.3.3"
+    },
+    "dependencies": {
+        "argon2": "^0.31.2",
+        "joi": "^17.12.0",
+        "jsonwebtoken": "^9.0.2",
+        "koa-bodyparser": "^4.4.1",
+        "pg": "^8.11.3"
+    }
 }
