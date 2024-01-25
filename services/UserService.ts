@@ -1,9 +1,20 @@
 import { Context } from 'koa';
-import { pool } from './pool';
+import { pool } from '../helpers/pool';
 import HashService from '../helpers/HashService';
+import { response } from '../helpers/response';
 
 export class UserService {
-    getAll() {}
+    async getAll(ctx: Context) {
+        const page = ctx.query.page;
+        const limit = ctx.query.limit || 5;
+
+        const queryResult = await pool.query(
+            'SELECT * FROM users ORDER BY user_id LIMIT $2 OFFSET (($1 - 1) * $2)',
+            [page, limit],
+        );
+
+        response(ctx, 200, queryResult.rows);
+    }
 
     async updateById(ctx: Context) {
         const { password, email }: any = ctx.request.body;

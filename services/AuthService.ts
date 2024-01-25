@@ -1,5 +1,5 @@
 import { Context } from 'koa';
-import { pool } from './pool';
+import { pool } from '../helpers/pool';
 import HashService from '../helpers/HashService';
 import JwtService from './JwtService';
 import { response } from '../helpers/response';
@@ -17,7 +17,7 @@ export class AuthService {
     }
 
     async signup(ctx: Context) {
-        const { password, email }: any = ctx.request.body;
+        const { password, email } = ctx.request.body as IUserData;
 
         const user = (await AuthService.findOneByEmail(email)).rows[0];
 
@@ -39,9 +39,15 @@ export class AuthService {
     }
 
     async login(ctx: Context) {
-        const { password, email }: any = ctx.request.body;
+        const { password, email }: any = ctx.request.body as IUserData;
 
         const user = (await AuthService.findOneByEmail(email)).rows[0];
+
+        if (!user) {
+            ctx.status = 401;
+            ctx.body = { message: 'Wrong credentials' };
+            return;
+        }
 
         if (!(await HashService.verifyPassword(user.password, password))) {
             ctx.status = 401;
