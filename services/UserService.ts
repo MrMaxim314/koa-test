@@ -2,6 +2,7 @@ import { Context } from 'koa';
 import { pool } from '../helpers/pool';
 import HashService from '../helpers/HashService';
 import { response } from '../helpers/response';
+import { IUserData } from './AuthService';
 
 export class UserService {
     async getAll(ctx: Context) {
@@ -17,7 +18,7 @@ export class UserService {
     }
 
     async updateById(ctx: Context) {
-        const { password, email }: any = ctx.request.body;
+        const { password, email } = ctx.request.body as IUserData;
 
         const userByEmail = (
             await pool.query('SELECT * FROM users WHERE username = $1', [
